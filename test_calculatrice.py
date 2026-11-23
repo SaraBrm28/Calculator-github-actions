@@ -1,7 +1,6 @@
 
 import pytest
-
-from calculatrice import addition, division
+from calculatrice import addition, division, soustraction
 
 
 def test_addition():
@@ -13,3 +12,7 @@ def test_division():
 
     with pytest.raises(ValueError):
         division(10, 0)
+
+
+def test_soustraction():
+    assert soustraction(10, 3) == 7
