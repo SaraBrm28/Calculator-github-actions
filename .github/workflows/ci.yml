@@ -14,8 +14,15 @@ jobs:
       - name: Recuperer le code
         uses: actions/checkout@v4
 
-      - name: Message de bienvenue
-        run: echo "Bienvenue dans notre pipeline CI !"
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
-      - name: Lister les fichiers
-        run: ls -la
+      - name: Installer les dependances
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      - name: Executer les tests
+        run: python -m pytest -v
